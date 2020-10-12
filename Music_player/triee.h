@@ -1,21 +1,19 @@
 #include <iostream>
 #include<windows.h>
 #include<mmsystem.h>
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
 #include <bits/stdc++.h>
 using namespace std;
 const int alphabets  =26;
 vector<string> lyrics;
 struct Node{
 
-    struct Node* children [alphabets] ;//={};
+    struct Node* children [alphabets] ;
     int occurences;
     bool flag;
 
 };
 void insert_trie(struct Node * trietree,char * word){
-struct Node * current=trietree;// current
+struct Node * current=trietree;
 while(*word!='\0'){
 
     if(current->children[*word-'a']==NULL){
@@ -41,15 +39,12 @@ if(*word=='\0'){
 }
 else
     return NULL;
-// look for every character we are searching
-
 
 }
 void autocomplete(struct Node* trietree, vector <char> word,char* prefix){
     bool nochild=true;
-if(trietree->flag==true && word.size()!=0){// if word.size() is not kept here , it gonna print the prefix so keep this check
-    // first print what is given as prefix
-    cout<<prefix;// now after this print the things uu got in vector word
+if(trietree->flag==true && word.size()!=0){
+    cout<<prefix;
     string s=prefix;
     for(int i=0;i<word.size();i++){
         cout<<word[i];
@@ -61,7 +56,6 @@ if(trietree->flag==true && word.size()!=0){// if word.size() is not kept here , 
 }
 for(int i=0;i<alphabets;i++){
 if(trietree->children[i]!=NULL){
-       // nochild=false;// it has a child
     word.push_back(i+'a');
     autocomplete(trietree->children[i],word,prefix);
     word.pop_back();
@@ -73,11 +67,6 @@ word.pop_back();
 
 string main1()
 {
-   //char word[123456];
-    //cout<<"enter number of words u want to enter "<<endl;
-//int n;
-//cin>>n;
-//Node* trietree=new Node();
  struct Node * trietree = new Node();
  char filename[100];
 	ifstream bad;
@@ -93,10 +82,7 @@ while(bad.good()){
 	 insert_trie(trietree,word);
 	bad>>word;
 }
-//for(int i=1;i<=n;i++){
-        //cin>>word;
-    //insert_trie(trietree,word);
-//}
+
 vector <char > ch;
 cout<<"enter  ur word to search"<<endl;
 cin>>word;
@@ -120,13 +106,6 @@ string s2=".wav";
  }
 
 return m;
-/* string my_str = m;
-   LPTSTR strr = new TCHAR[my_str.size() + 1]; 
-   
-   strcpy(strr, my_str.c_str());
-  return strr;*/
-//PlaySound(strr,NULL,SND_SYNC);
 
-  //  return 0;
 }
 
