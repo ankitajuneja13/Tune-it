@@ -72,11 +72,6 @@ word.pop_back();
 
 string main1()
 {
-   //char word[123456];
-    //cout<<"enter number of words u want to enter "<<endl;
-//int n;
-//cin>>n;
-//Node* trietree=new Node();
 
  struct Node * trietree = new Node();
  char filename[100];
