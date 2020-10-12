@@ -2,7 +2,7 @@
 #include<windows.h>
 #include<mmsystem.h>
 #include <cstdlib>
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -42,15 +42,13 @@ if(*word=='\0'){
 }
 else
     return NULL;
-// look for every character we are searching
 
 
 }
 void autocomplete(struct Node* trietree, vector <char> word,char* prefix){
     bool nochild=true;
-if(trietree->flag==true && word.size()!=0){// if word.size() is not kept here , it gonna print the prefix so keep this check
-    // first print what is given as prefix
-    cout<<prefix;// now after this print the things uu got in vector word
+if(trietree->flag==true && word.size()!=0){
+    cout<<prefix;
     string s=prefix;
     for(int i=0;i<word.size();i++){
         cout<<word[i];
@@ -62,7 +60,7 @@ if(trietree->flag==true && word.size()!=0){// if word.size() is not kept here , 
 }
 for(int i=0;i<alphabets;i++){
 if(trietree->children[i]!=NULL){
-       // nochild=false;// it has a child
+       
     word.push_back(i+'a');
     autocomplete(trietree->children[i],word,prefix);
     word.pop_back();
